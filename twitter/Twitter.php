@@ -26,8 +26,12 @@ class Twitter{
 	 * @param unknown $apiUrl
 	 * @return mixed
 	 */
-	private function getTwitterResponse(TwitterAPIExchange $twitter, $username, $apiUrl){
-		$response = $twitter->setGetField('?screen_name=' . $username . '&count=5')
+	private function getTwitterResponse(TwitterAPIExchange $twitter, $username, $apiUrl, $count = null){
+		$countUrl = '';
+		if(!empty($count)){
+			$countUrl = '&count=' . $count;
+		}
+		$response = $twitter->setGetField('?screen_name=' . $username . $countUrl)
 		->buildOauth($apiUrl, 'GET')
 		->performRequest(true);
 		$response = json_decode($response, true);
@@ -41,7 +45,7 @@ class Twitter{
 	 * @param unknown $apiUrl
 	 */
 	public function getTwitts(TwitterAPIExchange $twitter, $username, $apiUrl){
-		$response = $this->getTwitterResponse($twitter, $username, $apiUrl);
+		$response = $this->getTwitterResponse($twitter, $username, $apiUrl, 5);
 		echo '==========================Last 5 Tweets==========================' . "\n";
 		$i = 1;
 		foreach($response as $r){
