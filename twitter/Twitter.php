@@ -29,9 +29,9 @@ class Twitter{
 	private function getTwitterResponse(TwitterAPIExchange $twitter, $username, $apiUrl, $count = null){
 		$countUrl = '';
 		if(!empty($count)){
-			$countUrl = '&count=' . $count;
+			$countUrl = '&count=' . urlencode($count);
 		}
-		$response = $twitter->setGetField('?screen_name=' . $username . $countUrl)
+		$response = $twitter->setGetField('?screen_name=' . urlencode($username) . $countUrl)
 		->buildOauth($apiUrl, 'GET')
 		->performRequest(true);
 		$response = json_decode($response, true);
