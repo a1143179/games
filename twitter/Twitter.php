@@ -66,9 +66,9 @@ class Twitter{
 	public function getOtherStat(TwitterAPIExchange $twitter, $username, $apiUrl){
 		$response = $this->getTwitterResponse($twitter, $username, $apiUrl);
 		echo '==========================Other Statics==========================' . "\n";
-		echo 'Number of Tweets: ' . (!empty($response['statuses_count']) ? $response['statuses_count'] : '') . "\n";
-		echo 'Number of followers: ' . (!empty($response['followers_count']) ? $response['followers_count'] : '') . "\n";
-		echo 'Number of followings: ' . (!empty($response['friends_count']) ? $response['friends_count'] : '') . "\n";
+		echo 'Number of Tweets: ' . (!empty($response['statuses_count']) ? $response['statuses_count'] : '0') . "\n";
+		echo 'Number of followers: ' . (!empty($response['followers_count']) ? $response['followers_count'] : '0') . "\n";
+		echo 'Number of followings: ' . (!empty($response['friends_count']) ? $response['friends_count'] : '0') . "\n";
 	}
 	
 
