@@ -1,4 +1,4 @@
-Instruction to run
+Instructions to run
 
 For twitter: php Twitter.php [twitter_username]
 
